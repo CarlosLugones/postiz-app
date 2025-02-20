@@ -7,7 +7,6 @@ import { PoliciesGuard } from '@gitroom/backend/services/auth/permissions/permis
 import { BullMqModule } from '@gitroom/nestjs-libraries/bull-mq-transport-new/bull.mq.module';
 import { PluginModule } from '@gitroom/plugins/plugin.module';
 import { PublicApiModule } from '@gitroom/backend/public-api/public.api.module';
-import { ThrottlerBehindProxyGuard } from '@gitroom/nestjs-libraries/throttler/throttler.provider';
 import { AgentModule } from '@gitroom/nestjs-libraries/agent/agent.module';
 
 @Global()
@@ -22,10 +21,6 @@ import { AgentModule } from '@gitroom/nestjs-libraries/agent/agent.module';
   ],
   controllers: [],
   providers: [
-    {
-      provide: APP_GUARD,
-      useClass: ThrottlerBehindProxyGuard,
-    },
     {
       provide: APP_GUARD,
       useClass: PoliciesGuard,
